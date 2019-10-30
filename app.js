@@ -11,4 +11,7 @@ let UIController = (function() {
 //GLOBAL APP CONTROLLER
 let controller = (function(budgetCntrl, UICtrl) {
   //some code
+  document.querySelector(".add__btn").addEventListener("click", function() {
+    console.log("Button was clicked.");
+  });
 })(budgetController, UIController);
