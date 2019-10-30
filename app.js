@@ -11,3 +11,7 @@ let budgetController = (function() {
     }
   };
 })();
+
+let UIController = (function() {
+  //some code
+})();
