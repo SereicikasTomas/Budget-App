@@ -1,26 +1,14 @@
+//BUDGET CONTROLLER
 let budgetController = (function() {
-  let x = 20;
-
-  let add = function(a) {
-    return x + a;
-  };
-
-  return {
-    testFunction: function(b) {
-      return add(b);
-    }
-  };
+  //some code
 })();
 
+//UI CONTROLLER
 let UIController = (function() {
   //some code
 })();
 
+//GLOBAL APP CONTROLLER
 let controller = (function(budgetCntrl, UICtrl) {
-  let z = budgetCntrl.testFunction(5);
-  return {
-    anotherPublicFunction: function() {
-      console.log(z);
-    }
-  };
+  //some code
 })(budgetController, UIController);
