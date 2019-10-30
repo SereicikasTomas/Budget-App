@@ -7,7 +7,7 @@ let budgetController = (function() {
 
   return {
     testFunction: function(b) {
-      console.log(add(b));
+      return add(b);
     }
   };
 })();
@@ -15,3 +15,12 @@ let budgetController = (function() {
 let UIController = (function() {
   //some code
 })();
+
+let controller = (function(budgetCntrl, UICtrl) {
+  let z = budgetCntrl.testFunction(5);
+  return {
+    anotherPublicFunction: function() {
+      console.log(z);
+    }
+  };
+})(budgetController, UIController);
