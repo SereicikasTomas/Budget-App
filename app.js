@@ -8,6 +8,8 @@ let UIController = (function() {
   return {
     getInput: function() {
       let type = document.querySelector(".add__type").value; // inc or exp
+      let description = document.querySelector(".add__description").value;
+      let value = document.querySelector(".add__value").value;
     }
   };
 })();
