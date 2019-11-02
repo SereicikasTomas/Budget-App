@@ -3,4 +3,5 @@ Budget app created using vanilla Javascript. By implementing OOP (object oriente
 Working on this project I learned about:
 
 - How closures work
-- Modular components
+- About modular components
+- Program architecture
