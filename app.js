@@ -5,7 +5,11 @@ let budgetController = (function() {
 
 //UI CONTROLLER
 let UIController = (function() {
-  //some code
+  return {
+    getInput: function() {
+      let type = document.querySelector(".add__type").value; // inc or exp
+    }
+  };
 })();
 
 //GLOBAL APP CONTROLLER
