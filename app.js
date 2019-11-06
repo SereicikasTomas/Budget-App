@@ -5,6 +5,12 @@ let budgetController = (function() {
     this.description = description;
     this.value = value;
   };
+
+  let Income = function(id, description, value) {
+    this.id = id;
+    this.description = description;
+    this.value = value;
+  };
 })();
 
 //UI CONTROLLER
