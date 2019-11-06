@@ -1,6 +1,10 @@
 //BUDGET CONTROLLER
 let budgetController = (function() {
-  //some code
+  let Expense = function(id, description, value) {
+    this.id = id;
+    this.description = description;
+    this.value = value;
+  };
 })();
 
 //UI CONTROLLER
