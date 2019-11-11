@@ -70,6 +70,11 @@ let UIController = (function() {
         value: document.querySelector(DOMstrings.inputValue).value
       };
     },
+    addlistItem: function(obj, type) {
+      // Create HTML string with placeholder string
+      // Replace placeholder with actual data
+      // Insert HTML into DOM
+    },
     getDOMstrings: function() {
       return DOMstrings;
     }
