@@ -121,6 +121,8 @@ let UIController = (function() {
       fieldsArr = Array.prototype.slice.call(fields);
 
       fieldsArr.forEach(field => (field.value = ""));
+
+      fieldsArr[0].focus();
     },
     getDOMstrings: function() {
       return DOMstrings;
