@@ -155,7 +155,7 @@ let controller = (function(budgetCntrl, UICtrl) {
     // 1. Get the filed input data
     input = UICtrl.getInput();
 
-    if (input.description && !isNaN(input.value)) {
+    if (input.description && !isNaN(input.value) && input.value > 0) {
       // 2. Add the item to the budget controller
       newItem = budgetCntrl.addItem(input.type, input.description, input.value);
 
