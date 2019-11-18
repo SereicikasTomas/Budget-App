@@ -12,6 +12,11 @@ let budgetController = (function() {
     this.value = value;
   };
 
+  let calculateTotal = function(type) {
+    let sum = data.allItems[type].reduce((acc, cur) => acc + cur.value);
+    return sum;
+  };
+
   let data = {
     allItems: {
       exp: [],
@@ -47,6 +52,13 @@ let budgetController = (function() {
       // Return the new element
       return newItem;
     },
+
+    calculateBudget: function() {
+      // calculate total income and expenses
+      // calculate budget
+      // calculate percentage
+    },
+
     testing: function() {
       console.log(data);
     }
