@@ -13,8 +13,10 @@ let budgetController = (function() {
   };
 
   let calculateTotal = function(type) {
-    let sum = data.allItems[type].reduce((acc, cur) => acc + cur.value);
-    data.totals[type] = sum;
+    if (data.allItems[type].length) {
+      let sum = data.allItems[type].reduce((acc, cur) => acc + cur.value, 0);
+      data.totals[type] = sum;
+    }
   };
 
   let data = {
@@ -26,7 +28,8 @@ let budgetController = (function() {
       exp: 0,
       inc: 0
     },
-    budget: 0
+    budget: 0,
+    percentage: -1
   };
 
   return {
@@ -54,13 +57,26 @@ let budgetController = (function() {
       return newItem;
     },
 
-    calculateBudget: function() {
+    calculateBudget: function(type) {
       // calculate total income and expenses
-      calculateTotal("inc");
-      calculateTotal("exp");
+      calculateTotal(type);
 
       // calculate budget
+      data.budget = data.totals.inc - data.totals.exp;
+
       // calculate percentage
+      if (data.totals.inc > 0) {
+        data.percentage = Math.round((100 * data.totals.exp) / data.totals.inc);
+      }
+    },
+
+    getBudget: function() {
+      return {
+        budget: data.budget,
+        totalInc: data.totals.inc,
+        totalExp: data.totals.exp,
+        percentage: data.percentage
+      };
     },
 
     testing: function() {
@@ -160,10 +176,13 @@ let controller = (function(budgetCntrl, UICtrl) {
     });
   };
 
-  let updateBudget = function() {
+  let updateBudget = function(type) {
     // 1. Calculate the budget
+    budgetCntrl.calculateBudget(type);
     // 2. Return the budget
+    const budget = budgetCntrl.getBudget();
     // 3. Display the budget on the UI
+    console.log(budget);
   };
 
   let ctrlAddItem = function() {
@@ -182,7 +201,7 @@ let controller = (function(budgetCntrl, UICtrl) {
       UICtrl.clearFields();
 
       // 5. Calculate and update the budget
-      updateBudget();
+      updateBudget(input.type);
     }
   };
 
