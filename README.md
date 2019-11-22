@@ -4,4 +4,5 @@ Working on this project I learned about:
 
 - How closures work
 - About modular components
-- Program architecture
+- Program planning and architecture
+- Event delegation
