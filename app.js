@@ -57,6 +57,14 @@ let budgetController = (function() {
       return newItem;
     },
 
+    deleteItem: function(type, id) {
+      let ids = data.allItems[type].map(current => current.id);
+      let index = ids.indexOf(id);
+      if (index !== -1) {
+        data.allItems[type].splice(index, 1);
+      }
+    },
+
     calculateBudget: function(type) {
       // calculate total income and expenses
       calculateTotal(type);
@@ -117,7 +125,7 @@ let UIController = (function() {
       // Create HTML string with placeholder string
       if (type === "inc") {
         element = DOMstrings.incomeContainer;
-        html = `<div class="item clearfix" id="income-${obj.id}">
+        html = `<div class="item clearfix" id="inc-${obj.id}">
         <div class="item__description">${obj.description}</div>
         <div class="right clearfix">
           <div class="item__value">${obj.value}</div>
@@ -130,7 +138,7 @@ let UIController = (function() {
       </div>`;
       } else if (type === "exp") {
         element = DOMstrings.expensesContainer;
-        html = `<div class="item clearfix" id="expense-${obj.id}">
+        html = `<div class="item clearfix" id="exp-${obj.id}">
         <div class="item__description">${obj.description}</div>
         <div class="right clearfix">
           <div class="item__value">${obj.value}</div>
@@ -233,9 +241,10 @@ let controller = (function(budgetCntrl, UICtrl) {
     if (itemId) {
       splitID = itemId.split("-");
       type = splitID[0];
-      ID = splitID[1];
+      ID = parseInt(splitID[1]);
 
       // 1. Delete the item from data structure
+      budgetCntrl.deleteItem(type, ID);
       // 2. Delete the item from the UI
       // 3. Update and show the new budget
     }
