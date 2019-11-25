@@ -155,6 +155,7 @@ let UIController = (function() {
       // Insert HTML into DOM
       document.querySelector(element).insertAdjacentHTML("beforeend", html);
     },
+    deleteListItem: function() {},
     clearFields: function() {
       let fields, fieldsArr;
 
