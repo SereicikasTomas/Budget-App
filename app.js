@@ -16,6 +16,8 @@ let budgetController = (function() {
     if (data.allItems[type].length) {
       let sum = data.allItems[type].reduce((acc, cur) => acc + cur.value, 0);
       data.totals[type] = sum;
+    } else {
+      data.totals[type] = 0;
     }
   };
 
@@ -65,9 +67,10 @@ let budgetController = (function() {
       }
     },
 
-    calculateBudget: function(type) {
+    calculateBudget: function() {
       // calculate total income and expenses
-      calculateTotal(type);
+      calculateTotal("exp");
+      calculateTotal("inc");
 
       // calculate budget
       data.budget = data.totals.inc - data.totals.exp;
@@ -208,9 +211,9 @@ let controller = (function(budgetCntrl, UICtrl) {
       .addEventListener("click", ctrlDeleteItem);
   };
 
-  let updateBudget = function(type) {
+  let updateBudget = function() {
     // 1. Calculate the budget
-    budgetCntrl.calculateBudget(type);
+    budgetCntrl.calculateBudget();
     // 2. Return the budget
     const budget = budgetCntrl.getBudget();
     // 3. Display the budget on the UI
@@ -233,7 +236,7 @@ let controller = (function(budgetCntrl, UICtrl) {
       UICtrl.clearFields();
 
       // 5. Calculate and update the budget
-      updateBudget(input.type);
+      updateBudget();
     }
   };
 
@@ -248,9 +251,12 @@ let controller = (function(budgetCntrl, UICtrl) {
 
       // 1. Delete the item from data structure
       budgetCntrl.deleteItem(type, ID);
+
       // 2. Delete the item from the UI
       UICtrl.deleteListItem(itemId);
+
       // 3. Update and show the new budget
+      updateBudget();
     }
   };
 
