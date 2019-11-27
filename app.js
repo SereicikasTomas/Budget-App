@@ -214,10 +214,18 @@ let controller = (function(budgetCntrl, UICtrl) {
   let updateBudget = function() {
     // 1. Calculate the budget
     budgetCntrl.calculateBudget();
+
     // 2. Return the budget
     const budget = budgetCntrl.getBudget();
+
     // 3. Display the budget on the UI
     UICtrl.displayBudget(budget);
+  };
+
+  let updatePercentages = function() {
+    // 1.Calculate the percentages
+    // 2.Raed the percentages from budget controller
+    // 3. Update the UI with the new percentage
   };
 
   let ctrlAddItem = function() {
@@ -237,6 +245,9 @@ let controller = (function(budgetCntrl, UICtrl) {
 
       // 5. Calculate and update the budget
       updateBudget();
+
+      // 6. Calculate and update the precentages
+      updatePercentages();
     }
   };
 
@@ -257,6 +268,9 @@ let controller = (function(budgetCntrl, UICtrl) {
 
       // 3. Update and show the new budget
       updateBudget();
+
+      // 4. Calculate and update the percentages
+      updatePercentages();
     }
   };
 
